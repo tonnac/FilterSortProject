@@ -1,0 +1,19 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{96E1A696-4C57-432D-2BF8-07806527FF96}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "F_S",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "FilterSort",
+			"Enabled": true
+		}
+	]
+}
