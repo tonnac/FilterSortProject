@@ -14,3 +14,8 @@ bool FStatFilter::Is_Satisfied(const UAObject* _pData)
 {
 	return _pData->Stat == Stat;
 }
+
+bool FUsingFilter::Is_Satisfied(const UAObject* _pData)
+{
+	return _pData->IsUsing == IsUsing;
+}

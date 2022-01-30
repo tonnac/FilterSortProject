@@ -16,9 +16,11 @@ class F_S_API UAObject : public UObject
 
 public:
 	void Initialize();
+	void Initialize(int32 InID, int32 InLevel, int32 InStat, bool InIsUsing);
 	
 public:
 	mutable int32 ID = 0;
 	mutable int32 Level = 0;
 	mutable int32 Stat = 0;
+	mutable bool IsUsing = false;
 };

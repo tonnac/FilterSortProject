@@ -38,3 +38,15 @@ public:
 	virtual bool Is_Satisfied(const UAObject* _pData) override;
 	int32 Stat = 0;
 };
+
+class FUsingFilter : public TFilterInterface<UAObject>
+{
+public:
+	explicit FUsingFilter(bool IsUsing)
+		: IsUsing(IsUsing)
+	{
+	}
+
+	virtual bool Is_Satisfied(const UAObject* _pData) override;
+	bool IsUsing = false;
+};
