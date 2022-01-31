@@ -8,7 +8,7 @@ void UStatFilter::Initialize()
 {
 	for (int32 i = 0; i < 5; ++i)
 	{
-		StatFilters.Emplace(MakePimpl<FStatFilter>(i));
+		StatFilters.Emplace(MakePimpl<FStatFilter>(GetIndex(), i + 1));
 	}
 
 	// CurrentFilters.Emplace(StatFilters[2].Get());

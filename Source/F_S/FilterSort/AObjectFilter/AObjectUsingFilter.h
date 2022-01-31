@@ -16,10 +16,10 @@ UCLASS()
 class F_S_API UAObjectUsingFilter : public UFilter
 {
 	GENERATED_BODY()
-	IMPLEMENT_HASNOTCONTAINER_FILTER(UAObject, UAObjectUsingFilter)
+	IMPLEMENT_FILTER(UAObject, UAObjectUsingFilter, 2)
 
 public:
 	virtual void Initialize() override;
-private:
+public:
 	TPimplPtr<FUsingFilter> UsingFilter;
 };

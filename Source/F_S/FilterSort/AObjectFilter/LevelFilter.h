@@ -16,10 +16,10 @@ UCLASS()
 class F_S_API ULevelFilter : public UFilter 
 {
 	GENERATED_BODY()
-	IMPLEMENT_HASCONTAINER_FILTER(UAObject, ULevelFilter)
+	IMPLEMENT_HASCONTAINER_FILTER(UAObject, ULevelFilter, 1)
 	
 public:
 	virtual void Initialize() override;
-private:
+public:
 	TArray<TPimplPtr<FLevelFilter>> LevelFilters;
 };

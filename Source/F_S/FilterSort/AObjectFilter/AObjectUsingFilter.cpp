@@ -7,6 +7,5 @@
 
 void UAObjectUsingFilter::Initialize()
 {
-	UsingFilter = MakePimpl<FUsingFilter>(true);
-	CurrentFilter = UsingFilter.Get();
+	UsingFilter = MakePimpl<FUsingFilter>(GetIndex(), true);
 }

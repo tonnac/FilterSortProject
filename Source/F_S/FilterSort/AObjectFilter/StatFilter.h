@@ -16,10 +16,10 @@ UCLASS()
 class F_S_API UStatFilter : public UFilter
 {
 	GENERATED_BODY()
-	IMPLEMENT_HASCONTAINER_FILTER(UAObject, UStatFilter)
+	IMPLEMENT_HASCONTAINER_FILTER(UAObject, UStatFilter, 0)
 
 public:
 	virtual void Initialize() override;
-private:
+public:
 	TArray<TPimplPtr<FStatFilter>> StatFilters;
 };
