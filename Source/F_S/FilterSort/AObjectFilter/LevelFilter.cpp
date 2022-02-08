@@ -4,11 +4,17 @@
 #include "LevelFilter.h"
 #include "AObjectFilter.h"
 
+
 void ULevelFilter::Initialize()
 {
 	for (int32 i = 0; i < 5; ++i)
 	{
-		LevelFilters.Emplace(MakePimpl<FLevelFilter>(GetIndex(), i + 1));
+		if (UAObjectLevelFilterElement* NewFilterElement = NewObject<UAObjectLevelFilterElement>(this))
+		{
+			int32 Level = i + 1;
+			NewFilterElement->Initialize(GetIndex(), &Level);
+			Filters.Emplace(NewFilterElement);
+		}
 	}
 
 	// CurrentFilters.Emplace(LevelFilters[2].Get());

@@ -58,7 +58,7 @@ bool AObjectLevelFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	FLevelFilter* Lv2Filter = Cast<ULevelFilter>(FilterContainer.Get()->arrr[1])->LevelFilters[1].Get();
+	UFilterElement* Lv2Filter = Cast<ULevelFilter>(FilterContainer.Get()->arrr[1])->Filters[1];
 	FilterContainer->UpdateFilter(Lv2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -90,7 +90,7 @@ bool AObjectStatFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	FStatFilter* Stat2Filter = Cast<UStatFilter>(FilterContainer.Get()->arrr[0])->StatFilters[1].Get();
+	auto Stat2Filter = Cast<UStatFilter>(FilterContainer.Get()->arrr[0])->Filters[1];
 	FilterContainer->UpdateFilter(Stat2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -122,7 +122,7 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	FUsingFilter* UsingFilter = Cast<UAObjectUsingFilter>(FilterContainer.Get()->arrr[2])->UsingFilter.Get();
+	auto UsingFilter = Cast<UAObjectUsingFilter>(FilterContainer.Get()->arrr[2])->UsingFilter;
 	FilterContainer->UpdateFilter(UsingFilter);
 
 	const int32 OriginNum = Objects.Num();

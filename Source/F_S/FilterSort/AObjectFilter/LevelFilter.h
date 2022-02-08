@@ -8,6 +8,7 @@
 #include "Templates/PimplPtr.h"
 #include "LevelFilter.generated.h"
 
+class UFilterElement;
 class FLevelFilter;
 /**
  * 
@@ -19,7 +20,9 @@ class F_S_API ULevelFilter : public UFilter
 	IMPLEMENT_HASCONTAINER_FILTER(UAObject, ULevelFilter, 1)
 	
 public:
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("Level")); };
 	virtual void Initialize() override;
 public:
-	TArray<TPimplPtr<FLevelFilter>> LevelFilters;
+	UPROPERTY()
+	TArray<UFilterElement*> Filters;
 };

@@ -7,5 +7,10 @@
 
 void UAObjectUsingFilter::Initialize()
 {
-	UsingFilter = MakePimpl<FUsingFilter>(GetIndex(), true);
+	if (UAObjectUsingFilterElement* NewFilterElement = NewObject<UAObjectUsingFilterElement>(this))
+	{
+		bool bCondition = true;
+		NewFilterElement->Initialize(GetIndex(), &bCondition);
+		UsingFilter = NewFilterElement;
+	}
 }

@@ -1,48 +1,53 @@
 ﻿#pragma once
+#include "CoreMinimal.h"
 #include "AObject.h"
-#include "FilterInterface.h"
+#include "FilterElement.h"
+#include "AObjectFilter.generated.h"
 
-class FLevelFilter final : public TFilterInterface<UAObject>
+UCLASS()
+class F_S_API UAObjectLevelFilterElement : public UFilterElement
 {
+	GENERATED_BODY()
 public:
-	explicit FLevelFilter(int32 Index, int32 Level)
-		: TFilterInterface<UAObject>(Index) ,Level(Level)
-	{}
-
-	virtual bool Is_Satisfied(const UAObject* _pData) override;
+	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual bool operator()(const UAObject* _pData) override;
+	
+private:
 	int32 Level = 0;
 };
 
-
-class FIDFilter final : public TFilterInterface<UAObject>
+UCLASS()
+class F_S_API UAObjectIDFilterElement : public UFilterElement
 {
+	GENERATED_BODY()
 public:
-	explicit FIDFilter(int32 Index, int32 ID)
-		: TFilterInterface<UAObject>(Index), ID(ID)
-	{}
+	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual bool operator()(const UAObject* _pData) override;
 
-	virtual bool Is_Satisfied(const UAObject* _pData) override;
+private:
 	int32 ID = 0;
 };
 
-class FStatFilter final : public TFilterInterface<UAObject>
+UCLASS()
+class F_S_API UAObjectStatFilterElement : public UFilterElement
 {
+	GENERATED_BODY()
 public:
-	explicit FStatFilter(int32 Index, int32 Stat)
-		: TFilterInterface<UAObject>(Index), Stat(Stat)
-	{}
+	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual bool operator()(const UAObject* _pData) override;
 
-	virtual bool Is_Satisfied(const UAObject* _pData) override;
+private:
 	int32 Stat = 0;
 };
 
-class FUsingFilter final : public TFilterInterface<UAObject>
+UCLASS()
+class F_S_API UAObjectUsingFilterElement : public UFilterElement
 {
+	GENERATED_BODY()
 public:
-	explicit FUsingFilter(int32 Index, bool IsUsing)
-		: TFilterInterface<UAObject>(Index), IsUsing(IsUsing)
-	{}
+	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual bool operator()(const UAObject* _pData) override;
 
-	virtual bool Is_Satisfied(const UAObject* _pData) override;
-	bool IsUsing = false;
+private:
+	bool bIsUsing = false;
 };

@@ -6,6 +6,10 @@
 #include "GameFramework/GameModeBase.h"
 #include "F_SGameModeBase.generated.h"
 
+class UAObject;
+template <typename T>
+struct TFilterContainer;
+
 /**
  * 
  */
@@ -14,6 +18,16 @@ class F_S_API AF_SGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
-
+	AF_SGameModeBase();
+	virtual ~AF_SGameModeBase() override;
+	AF_SGameModeBase(FVTableHelper& Helper);
+	
+private:
 	virtual void BeginPlay() override;
+
+private:
+	TUniquePtr<TFilterContainer<UAObject>> FilterContainer;  
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> FilterSortHUDClass;
 };

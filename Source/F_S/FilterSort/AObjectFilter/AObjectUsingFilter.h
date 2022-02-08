@@ -21,5 +21,6 @@ class F_S_API UAObjectUsingFilter : public UFilter
 public:
 	virtual void Initialize() override;
 public:
-	TPimplPtr<FUsingFilter> UsingFilter;
+	UPROPERTY()
+	UFilterElement* UsingFilter = nullptr;
 };

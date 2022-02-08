@@ -30,7 +30,8 @@ public class F_S : ModuleRules
 			"Core", 
 			"CoreUObject", 
 			"Engine", 
-			"InputCore"
+			"InputCore",
+			"UMG"
 		});
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{

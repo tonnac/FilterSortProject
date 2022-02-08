@@ -8,6 +8,7 @@
 #include "Templates/PimplPtr.h"
 #include "StatFilter.generated.h"
 
+class UFilterElement;
 class FStatFilter;
 /**
  * 
@@ -17,9 +18,11 @@ class F_S_API UStatFilter : public UFilter
 {
 	GENERATED_BODY()
 	IMPLEMENT_HASCONTAINER_FILTER(UAObject, UStatFilter, 0)
-
+	
 public:
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("Stat")); }
 	virtual void Initialize() override;
 public:
-	TArray<TPimplPtr<FStatFilter>> StatFilters;
+	UPROPERTY()
+	TArray<UFilterElement*> Filters;
 };
