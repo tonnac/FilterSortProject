@@ -5,8 +5,9 @@
 #include "AObjectFilter.h"
 
 
-void ULevelFilter::Initialize()
+void ULevelFilter::Initialize(const FOnUpdateFilter& _Delegate)
 {
+	Super::Initialize(_Delegate);
 	for (int32 i = 0; i < 5; ++i)
 	{
 		if (UAObjectLevelFilterElement* NewFilterElement = NewObject<UAObjectLevelFilterElement>(this))

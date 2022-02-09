@@ -19,7 +19,7 @@ class F_S_API UAObjectUsingFilter : public UFilter
 	IMPLEMENT_FILTER(UAObject, UAObjectUsingFilter, 2)
 
 public:
-	virtual void Initialize() override;
+	virtual void Initialize(const FOnUpdateFilter& _Delegate) override;
 public:
 	UPROPERTY()
 	UFilterElement* UsingFilter = nullptr;

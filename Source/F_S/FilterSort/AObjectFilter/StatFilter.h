@@ -21,7 +21,7 @@ class F_S_API UStatFilter : public UFilter
 	
 public:
 	virtual FText GetFilterName() override { return FText::FromString(TEXT("Stat")); }
-	virtual void Initialize() override;
+	virtual void Initialize(const FOnUpdateFilter& _Delegate) override;
 public:
 	UPROPERTY()
 	TArray<UFilterElement*> Filters;

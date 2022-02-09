@@ -5,8 +5,9 @@
 
 #include "AObjectFilter.h"
 
-void UAObjectUsingFilter::Initialize()
+void UAObjectUsingFilter::Initialize(const FOnUpdateFilter& _Delegate)
 {
+	Super::Initialize(_Delegate);
 	if (UAObjectUsingFilterElement* NewFilterElement = NewObject<UAObjectUsingFilterElement>(this))
 	{
 		bool bCondition = true;
