@@ -8,10 +8,10 @@
 void UAObjectUsingFilter::Initialize(const FOnUpdateFilter& _Delegate)
 {
 	Super::Initialize(_Delegate);
-	if (UAObjectUsingFilterElement* NewFilterElement = NewObject<UAObjectUsingFilterElement>(this))
+	Filter = NewObject<UAObjectUsingFilterElement>(this);
+	if (IsValid(Filter))
 	{
 		bool bCondition = true;
-		NewFilterElement->Initialize(GetIndex(), &bCondition);
-		UsingFilter = NewFilterElement;
+		Filter->Initialize(GetIndex(), &bCondition);
 	}
 }

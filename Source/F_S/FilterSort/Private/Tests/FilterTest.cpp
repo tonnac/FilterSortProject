@@ -122,7 +122,7 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	auto UsingFilter = Cast<UAObjectUsingFilter>(FilterContainer.Get()->arrr[2])->UsingFilter;
+	auto UsingFilter = Cast<UAObjectUsingFilter>(FilterContainer.Get()->arrr[2])->Filter;
 	FilterContainer->UpdateFilter(UsingFilter);
 
 	const int32 OriginNum = Objects.Num();
