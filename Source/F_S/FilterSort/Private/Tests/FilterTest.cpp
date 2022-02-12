@@ -58,24 +58,17 @@ bool AObjectLevelFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	UFilterElement* Lv2Filter = Cast<ULevelFilter>(FilterContainer.Get()->arrr[1])->Filters[1];
-	FilterContainer->UpdateFilter(Lv2Filter);
+	UFilter* LevelFilter = FilterContainer.Get()->Filters[1];
+	UFilterElement* Lv2Filter = Cast<ULevelFilter>(FilterContainer.Get()->Filters[1])->Filters[1];
+	LevelFilter->UpdateFilter(Lv2Filter);
 
 	const int32 OriginNum = Objects.Num();
-	
-	Objects.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Objects.Num(), 4);
 
-	FilterContainer->UpdateFilter(Lv2Filter);
-
-	Copy.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	LevelFilter->UpdateFilter(Lv2Filter);
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;
@@ -90,24 +83,17 @@ bool AObjectStatFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	auto Stat2Filter = Cast<UStatFilter>(FilterContainer.Get()->arrr[0])->Filters[1];
-	FilterContainer->UpdateFilter(Stat2Filter);
+	UFilter* StatFilter = FilterContainer.Get()->Filters[0];
+	UFilterElement* Stat2Filter = Cast<UStatFilter>(FilterContainer.Get()->Filters[0])->Filters[1];
+	StatFilter->UpdateFilter(Stat2Filter);
 
 	const int32 OriginNum = Objects.Num();
-	
-	Objects.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Objects.Num(), 7);
 
-	FilterContainer->UpdateFilter(Stat2Filter);
-
-	Copy.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	StatFilter->UpdateFilter(Stat2Filter);
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;
@@ -122,24 +108,17 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	auto UsingFilter = Cast<UAObjectUsingFilter>(FilterContainer.Get()->arrr[2])->Filter;
-	FilterContainer->UpdateFilter(UsingFilter);
+	UFilter* UsingFilter = FilterContainer.Get()->Filters[2];
+	UFilterElement* UsingFilterElem = Cast<UAObjectUsingFilter>(FilterContainer.Get()->Filters[2])->Filter;
+	UsingFilter->UpdateFilter(UsingFilterElem);
 
 	const int32 OriginNum = Objects.Num();
-	
-	Objects.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Objects.Num(), 4);
 
-	FilterContainer->UpdateFilter(UsingFilter);
-
-	Copy.RemoveAll([Filter = FilterContainer.Get()](const UAObject* Object)
-	{
-		return Filter->operator()(Object);
-	});
+	UsingFilter->UpdateFilter(UsingFilterElem);
+	FilterContainer->ApplyFilter(Objects);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;

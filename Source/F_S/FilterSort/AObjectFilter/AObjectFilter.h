@@ -9,7 +9,7 @@ class F_S_API UAObjectLevelFilterElement : public UFilterElement
 {
 	GENERATED_BODY()
 public:
-	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual void Initialize(void* Src) override;
 	virtual bool operator()(const UAObject* _pData) override;
 	
 private:
@@ -21,7 +21,7 @@ class F_S_API UAObjectIDFilterElement : public UFilterElement
 {
 	GENERATED_BODY()
 public:
-	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual void Initialize(void* Src) override;
 	virtual bool operator()(const UAObject* _pData) override;
 
 private:
@@ -33,7 +33,7 @@ class F_S_API UAObjectStatFilterElement : public UFilterElement
 {
 	GENERATED_BODY()
 public:
-	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual void Initialize(void* Src) override;
 	virtual bool operator()(const UAObject* _pData) override;
 
 private:
@@ -45,7 +45,7 @@ class F_S_API UAObjectUsingFilterElement : public UFilterElement
 {
 	GENERATED_BODY()
 public:
-	virtual void Initialize(int32 InIndex, void* Src) override;
+	virtual void Initialize(void* Src) override;
 	virtual bool operator()(const UAObject* _pData) override;
 
 private:

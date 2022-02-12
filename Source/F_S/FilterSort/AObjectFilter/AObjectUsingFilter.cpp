@@ -5,13 +5,12 @@
 
 #include "AObjectFilter.h"
 
-void UAObjectUsingFilter::Initialize(const FOnUpdateFilter& _Delegate)
+void UAObjectUsingFilter::Initialize()
 {
-	Super::Initialize(_Delegate);
 	Filter = NewObject<UAObjectUsingFilterElement>(this);
 	if (IsValid(Filter))
 	{
 		bool bCondition = true;
-		Filter->Initialize(GetIndex(), &bCondition);
+		Filter->Initialize(&bCondition);
 	}
 }

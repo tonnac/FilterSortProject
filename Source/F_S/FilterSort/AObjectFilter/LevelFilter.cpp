@@ -5,15 +5,14 @@
 #include "AObjectFilter.h"
 
 
-void ULevelFilter::Initialize(const FOnUpdateFilter& _Delegate)
+void ULevelFilter::Initialize()
 {
-	Super::Initialize(_Delegate);
 	for (int32 i = 0; i < 5; ++i)
 	{
 		if (UAObjectLevelFilterElement* NewFilterElement = NewObject<UAObjectLevelFilterElement>(this))
 		{
 			int32 Level = i + 1;
-			NewFilterElement->Initialize(GetIndex(), &Level);
+			NewFilterElement->Initialize(&Level);
 			Filters.Emplace(NewFilterElement);
 		}
 	}

@@ -21,5 +21,5 @@ class F_S_API ULevelFilter : public UFilter
 	
 public:
 	virtual FText GetFilterName() override { return FText::FromString(TEXT("Level")); };
-	virtual void Initialize(const FOnUpdateFilter& _Delegate) override;
+	virtual void Initialize() override;
 };

@@ -19,5 +19,6 @@ class F_S_API UAObjectUsingFilter : public UFilter
 	IMPLEMENT_FILTER(UAObject, UAObjectUsingFilter, 2)
 
 public:
-	virtual void Initialize(const FOnUpdateFilter& _Delegate) override;
+	virtual void Initialize() override;
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("UsingFilter")); }
 };
