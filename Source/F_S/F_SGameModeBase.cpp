@@ -20,9 +20,6 @@ void AF_SGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto TokenStream = StaticClass()->ReferenceTokenStream;
-	CreateCluster();
-
 	FilterContainer = MakeUnique<TFilterContainer<UAObject>>(GetGameInstance());
 
 	if (FilterContainer)
