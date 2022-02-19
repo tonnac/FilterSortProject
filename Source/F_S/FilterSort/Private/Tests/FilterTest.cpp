@@ -63,10 +63,10 @@ bool AObjectLevelFilter::RunTest(const FString& Parameters)
 	const int32 OriginNum = Objects.Num();
 	FilterContainer->ApplyFilter(Objects);
 
-	TestEqual(TEXT("Filter Result"), Objects.Num(), 4);
+	TestEqual(TEXT("Filter Result"), Objects.Num(), 5);
 
 	LevelFilter->UpdateFilter(Lv2Filter);
-	FilterContainer->ApplyFilter(Objects);
+	FilterContainer->ApplyFilter(Copy);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;
@@ -89,10 +89,10 @@ bool AObjectStatFilter::RunTest(const FString& Parameters)
 	const int32 OriginNum = Objects.Num();
 	FilterContainer->ApplyFilter(Objects);
 
-	TestEqual(TEXT("Filter Result"), Objects.Num(), 7);
+	TestEqual(TEXT("Filter Result"), Objects.Num(), 2);
 
 	StatFilter->UpdateFilter(Stat2Filter);
-	FilterContainer->ApplyFilter(Objects);
+	FilterContainer->ApplyFilter(Copy);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;
@@ -115,10 +115,10 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	const int32 OriginNum = Objects.Num();
 	FilterContainer->ApplyFilter(Objects);
 
-	TestEqual(TEXT("Filter Result"), Objects.Num(), 4);
+	TestEqual(TEXT("Filter Result"), Objects.Num(), 5);
 
 	UsingFilter->UpdateFilter(UsingFilterElem);
-	FilterContainer->ApplyFilter(Objects);
+	FilterContainer->ApplyFilter(Copy);
 
 	TestEqual(TEXT("Filter Result"), Copy.Num(), OriginNum);
 	return true;
