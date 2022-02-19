@@ -1,9 +1,6 @@
 ﻿#include "AObject.h"
 #include "AObjectFilter.h"
-#include "AObjectUsingFilter.h"
 #include "FilterContainer.h"
-#include "LevelFilter.h"
-#include "StatFilter.h"
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(AObjectLevelFilter, "FilterSort.Private.AObjectLevelFilter",
                                  EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
@@ -58,8 +55,9 @@ bool AObjectLevelFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	UFilter* LevelFilter = FilterContainer.Get()->Filters[1];
-	UFilterElement* Lv2Filter = Cast<ULevelFilter>(FilterContainer.Get()->Filters[1])->Filters[1];
+	TArray<UFilter*> Filters = FilterContainer->GetFilters();
+	UFilter* LevelFilter = Filters[1];
+	UFilterElement* Lv2Filter = Cast<ULevelFilter>(Filters[1])->GetFilterElements()[1];
 	LevelFilter->UpdateFilter(Lv2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -83,8 +81,9 @@ bool AObjectStatFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	UFilter* StatFilter = FilterContainer.Get()->Filters[0];
-	UFilterElement* Stat2Filter = Cast<UStatFilter>(FilterContainer.Get()->Filters[0])->Filters[1];
+	TArray<UFilter*> Filters = FilterContainer->GetFilters();
+	UFilter* StatFilter = Filters[0];
+	UFilterElement* Stat2Filter = Cast<UStatFilter>(Filters[0])->GetFilterElements()[1];
 	StatFilter->UpdateFilter(Stat2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -108,8 +107,9 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	UFilter* UsingFilter = FilterContainer.Get()->Filters[2];
-	UFilterElement* UsingFilterElem = Cast<UAObjectUsingFilter>(FilterContainer.Get()->Filters[2])->Filter;
+	TArray<UFilter*> Filters = FilterContainer->GetFilters();
+	UFilter* UsingFilter = Filters[2];
+	UFilterElement* UsingFilterElem = Cast<UAObjectUsingFilter>(Filters[2])->GetFilterElements()[0];
 	UsingFilter->UpdateFilter(UsingFilterElem);
 
 	const int32 OriginNum = Objects.Num();

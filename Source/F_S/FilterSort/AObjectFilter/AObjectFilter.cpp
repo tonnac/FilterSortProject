@@ -1,43 +1,39 @@
 ﻿#include "AObjectFilter.h"
+#include "AObjectFilterElement.h"
 
-void UAObjectLevelFilterElement::Initialize(void* Src)
+void UStatFilter::Initialize()
 {
-	Level = *static_cast<int32*>(Src);
-	oo.KK = FText::FromString(FString::Format(TEXT("Lv.{0}"), { Level }));
+	for (int32 i = 0; i < 5; ++i)
+	{
+		if (UAObjectStatFilterElement* NewFilterElement = NewObject<UAObjectStatFilterElement>(this))
+		{
+			int32 Stat = i + 1;
+			NewFilterElement->Initialize(&Stat);
+			FilterElements.Emplace(NewFilterElement);
+		}
+	}
 }
 
-bool UAObjectLevelFilterElement::operator()(const UAObject* _pData)
+void ULevelFilter::Initialize()
 {
-	return _pData->Level == Level;
+	for (int32 i = 0; i < 5; ++i)
+	{
+		if (UAObjectLevelFilterElement* NewFilterElement = NewObject<UAObjectLevelFilterElement>(this))
+		{
+			int32 Level = i + 1;
+			NewFilterElement->Initialize(&Level);
+			FilterElements.Emplace(NewFilterElement);
+		}
+	}
 }
 
-void UAObjectIDFilterElement::Initialize(void* Src)
+void UAObjectUsingFilter::Initialize()
 {
-	ID = *static_cast<int32*>(Src);
-}
-
-bool UAObjectIDFilterElement::operator()(const UAObject* _pData)
-{
-	return _pData->ID == ID;
-}
-
-void UAObjectStatFilterElement::Initialize(void* Src)
-{
-	Stat = *static_cast<int32*>(Src);
-	oo.KK = FText::FromString(FString::Format(TEXT("Stat.{0}"), { Stat }));
-}
-
-bool UAObjectStatFilterElement::operator()(const UAObject* _pData)
-{
-	return _pData->Stat == Stat;
-}
-
-void UAObjectUsingFilterElement::Initialize(void* Src)
-{
-	bIsUsing = *static_cast<bool*>(Src);
-}
-
-bool UAObjectUsingFilterElement::operator()(const UAObject* _pData)
-{
-	return _pData->IsUsing == bIsUsing;
+	UAObjectUsingFilterElement* Filter = NewObject<UAObjectUsingFilterElement>(this);
+	if (IsValid(Filter))
+	{
+		bool bCondition = true;
+		Filter->Initialize(&bCondition);
+		FilterElements.Emplace(Filter);
+	}
 }

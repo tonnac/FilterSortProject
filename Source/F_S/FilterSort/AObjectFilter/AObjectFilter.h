@@ -1,53 +1,38 @@
 ﻿#pragma once
 #include "CoreMinimal.h"
 #include "AObject.h"
-#include "FilterElement.h"
+#include "Filter.h"
 #include "AObjectFilter.generated.h"
 
 UCLASS()
-class F_S_API UAObjectLevelFilterElement : public UFilterElement
+class F_S_API UStatFilter : public UFilter
 {
 	GENERATED_BODY()
-public:
-	virtual void Initialize(void* Src) override;
-	virtual bool operator()(const UAObject* _pData) override;
+	IMPLEMENT_COMMON_FILTER(UAObject, 0)
 	
-private:
-	int32 Level = 0;
+public:
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("Stat")); }
+	virtual void Initialize() override;
 };
 
 UCLASS()
-class F_S_API UAObjectIDFilterElement : public UFilterElement
+class F_S_API ULevelFilter : public UFilter 
 {
 	GENERATED_BODY()
-public:
-	virtual void Initialize(void* Src) override;
-	virtual bool operator()(const UAObject* _pData) override;
+	IMPLEMENT_COMMON_FILTER(UAObject, 1)
 
-private:
-	int32 ID = 0;
+public:
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("Level")); };
+	virtual void Initialize() override;
 };
 
 UCLASS()
-class F_S_API UAObjectStatFilterElement : public UFilterElement
+class F_S_API UAObjectUsingFilter : public UFilter
 {
 	GENERATED_BODY()
+	IMPLEMENT_COMMON_FILTER(UAObject, 2)
+	
 public:
-	virtual void Initialize(void* Src) override;
-	virtual bool operator()(const UAObject* _pData) override;
-
-private:
-	int32 Stat = 0;
-};
-
-UCLASS()
-class F_S_API UAObjectUsingFilterElement : public UFilterElement
-{
-	GENERATED_BODY()
-public:
-	virtual void Initialize(void* Src) override;
-	virtual bool operator()(const UAObject* _pData) override;
-
-private:
-	bool bIsUsing = false;
+	virtual void Initialize() override;
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("UsingFilter")); }
 };
