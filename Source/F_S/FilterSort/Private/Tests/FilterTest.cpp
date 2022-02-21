@@ -55,9 +55,9 @@ bool AObjectLevelFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	TArray<UFilter*> Filters = FilterContainer->GetFilters();
-	UFilter* LevelFilter = Filters[1];
-	UFilterElement* Lv2Filter = Cast<ULevelFilter>(Filters[1])->GetFilterElements()[1];
+	auto Filters = FilterContainer->GetFilters();
+	UFilter* LevelFilter = Cast<UFilter>(Filters[2]);
+	UFilterElement* Lv2Filter = Cast<ULevelFilter>(LevelFilter)->GetFilterElements()[1];
 	LevelFilter->UpdateFilter(Lv2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -81,9 +81,9 @@ bool AObjectStatFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	TArray<UFilter*> Filters = FilterContainer->GetFilters();
-	UFilter* StatFilter = Filters[0];
-	UFilterElement* Stat2Filter = Cast<UStatFilter>(Filters[0])->GetFilterElements()[1];
+	auto Filters = FilterContainer->GetFilters();
+	UFilter* StatFilter = Cast<UFilter>(Filters[1]);
+	UFilterElement* Stat2Filter = Cast<UStatFilter>(StatFilter)->GetFilterElements()[1];
 	StatFilter->UpdateFilter(Stat2Filter);
 
 	const int32 OriginNum = Objects.Num();
@@ -107,9 +107,9 @@ bool AObjectUsingFilter::RunTest(const FString& Parameters)
 	TArray<UAObject*> Objects = MakeObjects();
 	TArray<UAObject*> Copy = Objects;
 
-	TArray<UFilter*> Filters = FilterContainer->GetFilters();
-	UFilter* UsingFilter = Filters[2];
-	UFilterElement* UsingFilterElem = Cast<UAObjectUsingFilter>(Filters[2])->GetFilterElements()[0];
+	auto Filters = FilterContainer->GetFilters();
+	UFilter* UsingFilter = Cast<UFilter>(Filters[3]);
+	UFilterElement* UsingFilterElem = Cast<UAObjectUsingFilter>(UsingFilter)->GetFilterElements()[0];
 	UsingFilter->UpdateFilter(UsingFilterElem);
 
 	const int32 OriginNum = Objects.Num();
