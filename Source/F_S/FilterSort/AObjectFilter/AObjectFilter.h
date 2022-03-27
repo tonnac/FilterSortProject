@@ -5,12 +5,12 @@
 #include "Filter.h"
 #include "AObjectFilter.generated.h"
 
-UCLASS()
-class F_S_API UAObjectAllFilter : public UAllFilter
-{
-	GENERATED_BODY()
-	IMPLEMENT_COMMON_FILTER(UAObject, 0)
-};
+// UCLASS()
+// class F_S_API UAObjectAllFilter : public UAllFilter
+// {
+// 	GENERATED_BODY()
+// 	IMPLEMENT_COMMON_FILTER(UAObject, 0)
+// };
 
 UCLASS()
 class F_S_API UStatFilter : public UFilter
