@@ -39,3 +39,14 @@ void UAObjectUsingFilter::Initialize()
 		FilterElements.Emplace(Filter);
 	}
 }
+
+void UAObjectOptionFilter::Initialize()
+{
+	UAObjectOptionFilterElement* Filter = NewObject<UAObjectOptionFilterElement>(this);
+	if (IsValid(Filter))
+	{
+		bool bCondition = true;
+		Filter->Initialize(&bCondition);
+		FilterElements.Emplace(Filter);
+	}
+}

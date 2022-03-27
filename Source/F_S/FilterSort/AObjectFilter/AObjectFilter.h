@@ -1,16 +1,8 @@
 ﻿#pragma once
 #include "CoreMinimal.h"
-#include "AllFilter.h"
 #include "AObject.h"
 #include "Filter.h"
 #include "AObjectFilter.generated.h"
-
-// UCLASS()
-// class F_S_API UAObjectAllFilter : public UAllFilter
-// {
-// 	GENERATED_BODY()
-// 	IMPLEMENT_COMMON_FILTER(UAObject, 0)
-// };
 
 UCLASS()
 class F_S_API UStatFilter : public UFilter
@@ -43,4 +35,15 @@ class F_S_API UAObjectUsingFilter : public UFilter
 public:
 	virtual void Initialize() override;
 	virtual FText GetFilterName() override { return FText::FromString(TEXT("UsingFilter")); }
+};
+
+UCLASS()
+class F_S_API UAObjectOptionFilter : public UOptionFilter
+{
+	GENERATED_BODY()
+	IMPLEMENT_COMMON_FILTER(UAObject, 0)
+	
+public:
+	virtual void Initialize() override;
+	virtual FText GetFilterName() override { return FText::FromString(TEXT("Option")); }
 };

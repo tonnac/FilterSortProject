@@ -41,3 +41,13 @@ bool UAObjectUsingFilterElement::IsSatisfied(const UAObject* _pData)
 {
 	return _pData->IsUsing == bIsUsing;
 }
+
+void UAObjectOptionFilterElement::Initialize(void* Src)
+{
+	bOption = *static_cast<bool*>(Src);
+}
+
+bool UAObjectOptionFilterElement::IsSatisfied(const UAObject* _pData)
+{
+	return _pData->Option == bOption;
+}

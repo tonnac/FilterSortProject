@@ -23,4 +23,5 @@ public:
 	mutable int32 Level = 0;
 	mutable int32 Stat = 0;
 	mutable bool IsUsing = false;
+	mutable bool Option = false;
 };

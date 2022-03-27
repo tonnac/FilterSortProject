@@ -54,3 +54,15 @@ public:
 private:
 	bool bIsUsing = false;
 };
+
+UCLASS()
+class F_S_API UAObjectOptionFilterElement : public UFilterElement
+{
+	GENERATED_BODY()
+public:
+	virtual void Initialize(void* Src) override;
+	virtual bool IsSatisfied(const UAObject* _pData) override;
+
+private:
+	bool bOption = false;
+};
