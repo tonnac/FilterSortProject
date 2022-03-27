@@ -11,6 +11,7 @@
 
 # FilterSort Plugin
 Plugins/FilterSort
+Plugins/RiderLink
 
 # Compiled Object files
 *.slo

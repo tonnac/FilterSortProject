@@ -3,6 +3,7 @@
 
 void UStatFilter::Initialize()
 {
+	Super::Initialize();
 	for (int32 i = 0; i < 5; ++i)
 	{
 		if (UAObjectStatFilterElement* NewFilterElement = NewObject<UAObjectStatFilterElement>(this))
@@ -16,6 +17,7 @@ void UStatFilter::Initialize()
 
 void ULevelFilter::Initialize()
 {
+	Super::Initialize();
 	for (int32 i = 0; i < 5; ++i)
 	{
 		if (UAObjectLevelFilterElement* NewFilterElement = NewObject<UAObjectLevelFilterElement>(this))
