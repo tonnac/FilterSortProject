@@ -28,13 +28,16 @@ public:
 
 private:
 	void SetAObjectWidget() const;
-	void OnUpdateFilter();
+	void OnUpdateFilter() const;
 	
 private:
 	UPROPERTY()
 	TArray<UAObject*> Origin;
 	
 	TFilterContainer<UAObject>* FilterContainer = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	FSoftClassPath ClassPath;
 	
 	UPROPERTY(meta=(BindWidget))
 	UFilterListWidget* FilterList = nullptr;
