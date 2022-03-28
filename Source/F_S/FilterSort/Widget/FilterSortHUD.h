@@ -35,9 +35,6 @@ private:
 	TArray<UAObject*> Origin;
 	
 	TFilterContainer<UAObject>* FilterContainer = nullptr;
-
-	UPROPERTY(EditAnywhere)
-	FSoftClassPath ClassPath;
 	
 	UPROPERTY(meta=(BindWidget))
 	UFilterListWidget* FilterList = nullptr;
