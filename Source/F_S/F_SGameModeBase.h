@@ -26,6 +26,9 @@ private:
 	virtual void BeginPlay() override;
 
 private:
+	TArray<UAObject*> MakeObjects();
+
+private:
 	TUniquePtr<TFilterContainer<UAObject>> FilterContainer;  
 	
 	UPROPERTY(EditAnywhere)

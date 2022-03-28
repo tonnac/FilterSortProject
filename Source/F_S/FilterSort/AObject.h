@@ -19,9 +19,18 @@ public:
 	void Initialize(int32 InID, int32 InLevel, int32 InStat, bool InIsUsing);
 	
 public:
+	UPROPERTY(BlueprintReadOnly)
 	mutable int32 ID = 0;
+
+	UPROPERTY(BlueprintReadOnly)
 	mutable int32 Level = 0;
+	
+	UPROPERTY(BlueprintReadOnly)
 	mutable int32 Stat = 0;
+
+	UPROPERTY(BlueprintReadOnly)
 	mutable bool IsUsing = false;
+
+	UPROPERTY(BlueprintReadOnly)
 	mutable bool Option = false;
 };

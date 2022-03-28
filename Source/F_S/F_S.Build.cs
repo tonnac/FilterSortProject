@@ -32,10 +32,12 @@ public class F_S : ModuleRules
 			"Engine", 
 			"InputCore",
 			"UMG"
+
 		});
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"FilterSort"
+			"FilterSort",
+			"UMGEditor"
 		});
 		PublicIncludePathModuleNames.AddRange(new string[]
 		{
