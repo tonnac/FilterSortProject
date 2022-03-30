@@ -12,7 +12,7 @@ class UScrollBox;
 class UFilterListWidget;
 class UAObject;
 template <typename T>
-struct TFilterContainer;
+class TFilterContainer;
 
 /**
  * 

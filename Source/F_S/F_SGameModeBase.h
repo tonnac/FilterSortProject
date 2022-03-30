@@ -8,7 +8,7 @@
 
 class UAObject;
 template <typename T>
-struct TFilterContainer;
+class TFilterContainer;
 
 /**
  * 
