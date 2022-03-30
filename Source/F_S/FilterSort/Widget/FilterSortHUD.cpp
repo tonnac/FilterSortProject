@@ -6,6 +6,7 @@
 #include "AObjectWidget.h"
 #include "FilterContainer.h"
 #include "Components/ScrollBox.h"
+#include "Components/TextBlock.h"
 #include "UMGEditor/Public/WidgetBlueprint.h"
 
 void UFilterSortHUD::Init(const TArray<UAObject*>& Objects, TFilterContainer<UAObject>* FilterContainerArgs)

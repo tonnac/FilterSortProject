@@ -3,7 +3,7 @@
 void UAObjectLevelFilterElement::Initialize(void* Src)
 {
 	Level = *static_cast<int32*>(Src);
-	oo.KK = FText::FromString(FString::Format(TEXT("Lv.{0}"), { Level }));
+	FilterElementProperty.ElementName = FText::FromString(FString::Format(TEXT("Lv.{0}"), { Level }));
 }
 
 bool UAObjectLevelFilterElement::IsSatisfied(const UAObject* _pData)
@@ -24,7 +24,7 @@ bool UAObjectIDFilterElement::IsSatisfied(const UAObject* _pData)
 void UAObjectStatFilterElement::Initialize(void* Src)
 {
 	Stat = *static_cast<int32*>(Src);
-	oo.KK = FText::FromString(FString::Format(TEXT("Stat.{0}"), { Stat }));
+	FilterElementProperty.ElementName = FText::FromString(FString::Format(TEXT("Stat.{0}"), { Stat }));
 }
 
 bool UAObjectStatFilterElement::IsSatisfied(const UAObject* _pData)
