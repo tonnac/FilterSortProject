@@ -28,7 +28,7 @@ void UFilterSortHUD::SetAObjectWidget() const
 	ScrollBox->ClearChildren();
 	for (UAObject* AObject : CopyObjects)
 	{
-		if (UAObjectWidget* AObjectWidget = Cast<UAObjectWidget>(CreateWidget(GetWorld(), *WidgetClass->GeneratedClass)))
+		if (UAObjectWidget* AObjectWidget = CreateWidget<UAObjectWidget>(GetWorld(), *WidgetClass->GeneratedClass))
 		{
 			AObjectWidget->SetAObject(AObject);
 			ScrollBox->AddChild(AObjectWidget);
