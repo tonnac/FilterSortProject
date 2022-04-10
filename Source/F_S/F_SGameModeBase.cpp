@@ -3,10 +3,10 @@
 
 #include "F_SGameModeBase.h"
 
-#include "FilterContainer.h"
+#include "Filter/FilterContainer.h"
 #include "AObject.h"
 #include "Blueprint/UserWidget.h"
-#include "Widget/FilterListWidget.h"
+#include "Widget/Filter/FilterListWidget.h"
 #include "Widget/FilterSortHUD.h"
 
 AF_SGameModeBase::AF_SGameModeBase() = default;

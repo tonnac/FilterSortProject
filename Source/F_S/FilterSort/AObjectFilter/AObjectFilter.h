@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "CoreMinimal.h"
 #include "AObject.h"
-#include "Filter.h"
+#include "Filter/Filter.h"
 #include "AObjectFilter.generated.h"
 
 UCLASS()

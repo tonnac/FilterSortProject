@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AObject.h"
-#include "FilterElement.h"
+#include "Filter/FilterElement.h"
 #include "AObjectFilterElement.generated.h"
 
 UCLASS()

@@ -1,6 +1,6 @@
 ﻿#include "AObject.h"
 #include "AObjectFilter.h"
-#include "FilterContainer.h"
+#include "Filter/FilterContainer.h"
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(AObjectLevelFilter, "FilterSort.Private.AObjectLevelFilter",
                                  EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
