@@ -14,3 +14,8 @@ FText UAObjectStatSort::GetSortName()
 {
 	return FText::FromString(TEXT("Stat"));
 }
+
+FText UAObjectUsingSort::GetSortName()
+{
+	return FText::FromString(TEXT("Using"));
+}

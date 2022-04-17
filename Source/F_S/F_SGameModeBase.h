@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "F_SGameModeBase.generated.h"
 
+class USortBase;
+class UFilterBase;
 class UAObject;
 template <typename T>
 class TFilterContainer;

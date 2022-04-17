@@ -38,3 +38,14 @@ class F_S_API UAObjectStatSort : public USortBase
 
 	virtual FText GetSortName() override;
 };
+
+UCLASS()
+class F_S_API UAObjectUsingSort : public USortBase
+{
+	GENERATED_BODY()
+
+	IMPLEMENT_COMMON_PROPERTY(UAObject, 3)
+	IMPLEMENT_SORT(UAObject, IsUsing)
+
+	virtual FText GetSortName() override;
+};
