@@ -7,13 +7,22 @@
 #include "Filter/FilterContainer.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
+#include "Sort/SortContainer.h"
 #include "UMGEditor/Public/WidgetBlueprint.h"
+#include "Widget/Filter/FilterListWidget.h"
+#include "Widget/Sort/SortListWidget.h"
 
-void UFilterSortHUD::Init(const TArray<UAObject*>& Objects, TFilterContainer<UAObject>* FilterContainerArgs)
+void UFilterSortHUD::Init(const TArray<UAObject*>& Objects, TFilterContainer<UAObject>* FilterContainerArgs, TSortContainer<UAObject>* InSortContainer)
 {
 	Origin = Objects;
 	FilterContainer = FilterContainerArgs;
 	FilterContainer->GetUpdateFilter().AddUObject(this, &UFilterSortHUD::OnUpdateFilter);
+	FilterList->SetFilter(FilterContainer);
+
+	SortContainer = InSortContainer;
+	SortContainer->GetUpdateSort().AddUObject(this, &UFilterSortHUD::OnUpdateFilter);
+	SortList->SetSort(SortContainer);
+	
 	SetAObjectWidget();	
 }
 
@@ -24,6 +33,7 @@ void UFilterSortHUD::SetAObjectWidget() const
 	TArray<UAObject*> CopyObjects = Origin;
 
 	FilterContainer->ApplyFilter(CopyObjects);
+	SortContainer->ApplySort(CopyObjects);
 
 	ScrollBox->ClearChildren();
 	for (UAObject* AObject : CopyObjects)

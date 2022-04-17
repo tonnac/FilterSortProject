@@ -7,12 +7,15 @@
 #include "FilterSortHUD.generated.h"
 
 
+class USortListWidget;
 class UTextBlock;
 class UScrollBox;
 class UFilterListWidget;
 class UAObject;
 template <typename T>
 class TFilterContainer;
+template <typename T>
+class TSortContainer;
 
 /**
  * 
@@ -23,8 +26,7 @@ class F_S_API UFilterSortHUD : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UFilterListWidget* GetFilterList() const { return FilterList; }
-	void Init(const TArray<UAObject*>& Objects, TFilterContainer<UAObject>* FilterContainerArgs);
+	void Init(const TArray<UAObject*>& Objects, TFilterContainer<UAObject>* FilterContainerArgs, TSortContainer<UAObject>* InSortContainer);
 
 private:
 	void SetAObjectWidget() const;
@@ -35,10 +37,14 @@ private:
 	TArray<UAObject*> Origin;
 	
 	TFilterContainer<UAObject>* FilterContainer = nullptr;
+	TSortContainer<UAObject>* SortContainer = nullptr;
 	
 	UPROPERTY(meta=(BindWidget))
 	UFilterListWidget* FilterList = nullptr;
 
+	UPROPERTY(meta=(BindWidget))
+	USortListWidget* SortList = nullptr;
+	
 	UPROPERTY(meta=(BindWidget))
 	UScrollBox* ScrollBox = nullptr;
 

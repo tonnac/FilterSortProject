@@ -9,6 +9,8 @@
 class UAObject;
 template <typename T>
 class TFilterContainer;
+template <typename T>
+class TSortContainer;
 
 /**
  * 
@@ -30,6 +32,7 @@ private:
 
 private:
 	TUniquePtr<TFilterContainer<UAObject>> FilterContainer;  
+	TUniquePtr<TSortContainer<UAObject>> SortContainer;  
 	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UUserWidget> FilterSortHUDClass;

@@ -6,7 +6,7 @@
 #include "Filter/FilterContainer.h"
 #include "AObject.h"
 #include "Blueprint/UserWidget.h"
-#include "Widget/Filter/FilterListWidget.h"
+#include "Sort/SortContainer.h"
 #include "Widget/FilterSortHUD.h"
 
 AF_SGameModeBase::AF_SGameModeBase() = default;
@@ -21,15 +21,15 @@ void AF_SGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	FilterContainer = MakeUnique<TFilterContainer<UAObject>>(GetGameInstance());
+	SortContainer = MakeUnique<TSortContainer<UAObject>>(GetGameInstance());
 
-	if (FilterContainer)
+	if (FilterContainer && SortContainer)
 	{
 		if (UFilterSortHUD* FilterSortHUD = Cast<UFilterSortHUD>(CreateWidget(GetGameInstance(), FilterSortHUDClass, TEXT("HUD"))))
 		{
 			FilterSortHUD->AddToViewport(0);
-			FilterSortHUD->GetFilterList()->SetFilter(FilterContainer.Get());
 			const TArray<UAObject*> Objects = MakeObjects();
-			FilterSortHUD->Init(Objects, FilterContainer.Get());
+			FilterSortHUD->Init(Objects, FilterContainer.Get(), SortContainer.Get());
 		}
 	}
 }
